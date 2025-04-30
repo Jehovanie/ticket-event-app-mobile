@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ["./app/**/*.{js,jsx,ts,tsx}"],
+	content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
 	presets: [require("nativewind/preset")],
 	theme: {
 		extend: {
@@ -14,7 +14,8 @@ module.exports = {
 			},
 			colors: {
 				primary: {
-					100: "#0061FF0A",
+					DEFAULT: "#5C27C0",
+					100: "#F7F3FF",
 					200: "#0061FF1A",
 					300: "#0061FF",
 				},

@@ -5,10 +5,10 @@ import { View, Text, Image, ImageSourcePropType } from "react-native";
 
 const TabIcon = ({ focused, icon, title }: { focused: boolean; icon: ImageSourcePropType; title: string }) => (
 	<View className="flex-1 mt-3 flex flex-col items-center">
-		<Image source={icon} tintColor={focused ? "#0061FF" : "#666876"} resizeMode="contain" className="size-6" />
+		<Image source={icon} tintColor={focused ? "#5C27C0" : "#666876"} resizeMode="contain" className="size-6" />
 		<Text
 			className={`${
-				focused ? "text-primary-300 font-poppins-medium" : "text-black-200 font-poppins"
+				focused ? "text-primary font-poppins-medium" : "text-black-200 font-poppins"
 			} text-xs w-full text-center mt-1`}
 		>
 			{title}
