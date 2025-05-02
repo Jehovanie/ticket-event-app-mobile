@@ -4,7 +4,7 @@ import "./global.css";
 import { useEffect } from "react";
 import { useFonts } from "expo-font";
 
-export default function RootLayout() {
+export default function AppLayout() {
 	const [fontsLoaded] = useFonts({
 		"Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
 		"Poppins-ExtraBold": require("../assets/fonts/Poppins-ExtraBold.ttf"),
