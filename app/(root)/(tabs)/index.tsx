@@ -3,7 +3,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import NoResults from "@/components/NoResult";
 import { Card, FeaturedCard } from "@/components/Cards";
-import Search from "@/components/Search";
 import icons from "@/constants/icons";
 import images from "@/constants/images";
 import Filters from "@/components/Filters";
