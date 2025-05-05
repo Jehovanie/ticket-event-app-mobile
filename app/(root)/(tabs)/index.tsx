@@ -39,7 +39,7 @@ const Index = () => {
 				}
 				ListHeaderComponent={
 					<View>
-						<View className="px-5 bg-primary pb-10 rounded-bl-3xl rounded-br-3xl mb-5">
+						<View className="px-5 bg-primary-300 pb-10 rounded-bl-3xl rounded-br-3xl mb-5">
 							<View className="flex flex-row items-center justify-between my-5">
 								<View className="flex flex-row items-center">
 									<Text className="text-3xl font-poppins-extrabold text-white">Home</Text>

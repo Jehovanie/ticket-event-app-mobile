@@ -16,7 +16,7 @@ export const FeaturedCard = ({ onPress }: Props) => {
 
 	return (
 		<TouchableOpacity onPress={onPress} className="flex flex-col items-start w-60 h-52 relative">
-			<Image source={images.eventLadies} className="size-full rounded-2xl" />
+			<Image source={images.maitreGims} className="size-full rounded-2xl" />
 			<Image source={images.cardGradient} className="size-full rounded-2xl absolute bottom-0" />
 
 			<View className="flex flex-row items-center bg-white/90 px-3 py-1.5 rounded-full absolute top-5 right-5">
@@ -57,7 +57,7 @@ export const Card = () => {
 				<Text className="text-xs font-rubik-bold text-primary-300 ml-0.5">1.5</Text>
 			</View>
 
-			<Image source={images.eventLadies} className="w-full h-60 rounded-lg" resizeMode="cover" />
+			<Image source={images.lafouine} className="w-full h-60 rounded-lg" resizeMode="cover" />
 
 			<View className="flex flex-col mt-2">
 				<Text className="text-base font-poppins-bold text-black-300">{name}</Text>

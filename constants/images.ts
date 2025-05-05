@@ -4,6 +4,8 @@ import cardGradient from "@/assets/images/card-gradient.png";
 import eventCar from "@/assets/images/event-car.jpg";
 import eventLadies from "@/assets/images/event-ladie.jpg";
 import imageiDragons from "@/assets/images/imagine-dragon.jpg";
+import maitreGims from "@/assets/images/maitre-gims.jpg";
+import lafouine from "@/assets/images/lafoine.jpg"
 
 export default {
 	avatar,
@@ -12,4 +14,6 @@ export default {
 	eventCar,
 	eventLadies,
 	imageiDragons,
+	maitreGims,
+	lafouine,
 };
