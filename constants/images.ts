@@ -5,7 +5,9 @@ import eventCar from "@/assets/images/event-car.jpg";
 import eventLadies from "@/assets/images/event-ladie.jpg";
 import imageiDragons from "@/assets/images/imagine-dragon.jpg";
 import maitreGims from "@/assets/images/maitre-gims.jpg";
-import lafouine from "@/assets/images/lafoine.jpg"
+import lafouine from "@/assets/images/lafoine.jpg";
+import logo from "@/assets/images/icon.png";
+import logoTransparent from "@/assets/images/icon-transparent.png";
 
 export default {
 	avatar,
@@ -16,4 +18,6 @@ export default {
 	imageiDragons,
 	maitreGims,
 	lafouine,
+	logo,
+	logoTransparent
 };

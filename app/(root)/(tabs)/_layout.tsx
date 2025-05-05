@@ -1,7 +1,8 @@
 import icons from "@/constants/icons";
-import { Tabs } from "expo-router";
+import { Redirect, Tabs } from "expo-router";
 import React from "react";
-import { View, Text, Image, ImageSourcePropType } from "react-native";
+import { View, Text, Image, ImageSourcePropType, ActivityIndicator } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const TabIcon = ({ focused, icon, title }: { focused: boolean; icon: ImageSourcePropType; title: string }) => (
 	<View className="flex-1 mt-3 flex flex-col items-center">
@@ -17,6 +18,18 @@ const TabIcon = ({ focused, icon, title }: { focused: boolean; icon: ImageSource
 );
 
 const AppHomeLayout = () => {
+	const { loading, isLogged } = { loading: false, isLogged: false };
+
+	if (loading) {
+		return (
+			<SafeAreaView className="bg-white h-full flex items-center justify-center">
+				<ActivityIndicator className="text-primary-300" size="large" />
+			</SafeAreaView>
+		);
+	}
+
+	if (!isLogged) return <Redirect href="./signin" />;
+
 	return (
 		<Tabs
 			screenOptions={{
