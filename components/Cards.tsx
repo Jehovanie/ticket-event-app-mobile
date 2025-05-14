@@ -1,18 +1,19 @@
-import icons from "@/constants/icons";
-import images from "@/constants/images";
+import icons from "@/_shard/constants/icons";
+import images from "@/_shard/constants/images";
+import { IEvent } from "@/_shard/model/IEvent";
+import { ITicketType } from "@/_shard/model/ITicketType";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
 interface Props {
+	event: IEvent;
 	onPress?: () => void;
 }
 
-export const FeaturedCard = ({ onPress }: Props) => {
-	const image = "";
+export const FeaturedCard = ({ event, onPress }: Props) => {
+	const { ticket_type } = event;
 
+	const min_price_ticket = ticket_type.reduce((a: ITicketType, b: ITicketType) => (a.prix > b.prix ? a : b));
 	const rating = 1.1;
-	const name = "Maitre Gims";
-	const address = "Paris France";
-	const price = 150;
 
 	return (
 		<TouchableOpacity onPress={onPress} className="flex flex-col items-start w-60 h-52 relative">
@@ -26,14 +27,14 @@ export const FeaturedCard = ({ onPress }: Props) => {
 
 			<View className="flex flex-col items-start absolute bottom-5 inset-x-5">
 				<Text className="text-xl font-poppins-semibold text-white" numberOfLines={1}>
-					{name}
+					{event.title}
 				</Text>
 				<Text className="text-base font-poppins text-white" numberOfLines={1}>
-					{address}
+					{event.location.name}
 				</Text>
 
 				<View className="flex flex-row items-center justify-between w-full">
-					<Text className="text-xl font-poppins-extrabold text-white">${price}</Text>
+					<Text className="text-xl font-poppins-extrabold text-white">${min_price_ticket.prix}</Text>
 					<Image source={icons.heart} className="size-5" />
 				</View>
 			</View>
@@ -41,7 +42,7 @@ export const FeaturedCard = ({ onPress }: Props) => {
 	);
 };
 
-export const Card = () => {
+export const Card = ({ event, onPress }: Props) => {
 	const image = "";
 	const rating = 1.1;
 	const name = "La Fouinne";
@@ -60,8 +61,8 @@ export const Card = () => {
 			<Image source={images.lafouine} className="w-full h-60 rounded-lg" resizeMode="cover" />
 
 			<View className="flex flex-col mt-2">
-				<Text className="text-base font-poppins-bold text-black-300">{name}</Text>
-				<Text className="text-xs font-poppins text-black-100">{address}</Text>
+				<Text className="text-base font-poppins-bold text-black-300">{event.title}</Text>
+				<Text className="text-xs font-poppins text-black-100">{event.location.name}</Text>
 				<Text className="text-base font-poppins-bold">
 					{date} - {time}
 				</Text>

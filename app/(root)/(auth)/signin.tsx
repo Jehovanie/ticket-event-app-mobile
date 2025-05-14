@@ -1,5 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
-import images from "@/constants/images";
+import images from "@/_shard/constants/images";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
 

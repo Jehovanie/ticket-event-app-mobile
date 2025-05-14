@@ -1,4 +1,4 @@
-import icons from "@/constants/icons";
+import icons from "@/_shard/constants/icons";
 import { Redirect, Tabs } from "expo-router";
 import React from "react";
 import { View, Text, Image, ImageSourcePropType, ActivityIndicator } from "react-native";

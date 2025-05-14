@@ -2,7 +2,7 @@ import { Card } from "@/components/Cards";
 import Filters from "@/components/Filters";
 import NoResults from "@/components/NoResult";
 import Search from "@/components/Search";
-import icons from "@/constants/icons";
+import icons from "@/_shard/constants/icons";
 import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 

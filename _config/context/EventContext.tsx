@@ -1,20 +1,12 @@
 import React, { createContext, useEffect, useState, ReactNode } from "react";
 import { client } from "../api/client";
-import { isLoaded } from "expo-font";
+import { IEvent } from "@/_shard/model/IEvent";
 
 type DataEventType = {
-	events: EventType[];
+	events: Partial<IEvent>[];
 	isLoading: boolean;
 	errors: any[];
 };
-
-// Define type for events if needed
-type EventType = {
-	id: number;
-	title: string;
-	// Add more fields as needed
-};
-
 // Define context type
 export const EventContext: React.Context<DataEventType> = createContext<DataEventType>({
 	events: [],
@@ -32,9 +24,10 @@ export const EventProvider = ({ children }: { children: ReactNode }) => {
 	useEffect(() => {
 		const fetchEvents = async () => {
 			try {
-				const response = await client.get<EventType[]>("/api/events");
+				const response = await client.get<Partial<IEvent>[]>("/api/events");
+				const tickets = response.data;
 				setDataEvents({
-					events: response.data,
+					events: tickets,
 					isLoading: false,
 					errors: [],
 				});

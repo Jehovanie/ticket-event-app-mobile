@@ -1,4 +1,4 @@
-import icons from "@/constants/icons";
+import icons from "@/_shard/constants/icons";
 import { router, useLocalSearchParams, usePathname } from "expo-router";
 import { useState } from "react";
 import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";

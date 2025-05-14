@@ -3,8 +3,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import NoResults from "@/components/NoResult";
 import { Card, FeaturedCard } from "@/components/Cards";
-import icons from "@/constants/icons";
-import images from "@/constants/images";
+import icons from "@/_shard/constants/icons";
+import images from "@/_shard/constants/images";
 import Filters from "@/components/Filters";
 import { useContext, useEffect, useState } from "react";
 import { EventContext } from "@/_config/context/EventContext";
@@ -29,24 +29,21 @@ const Index = () => {
 
 	const context = useContext(EventContext);
 	if (!context) throw new Error("Must be used inside EventProvider");
-
 	const { events, isLoading, errors } = context;
 
 	useEffect(() => {
-		
 		setLatestProperties(events);
-		setProperties(events);
+		setProperties(events.reverse());
 
-		console.log("isLoading");
-		console.log(isLoading);
-
+		console.log(events[0]);
 	}, [isLoading]);
 
 	return (
 		<SafeAreaView className="bg-white flex-1">
 			<FlatList
 				data={properties}
-				renderItem={({ item }) => <Card />}
+				renderItem={({ item }) => <Card event={item} />}
+				keyExtractor={(item) => item.id.toString()}
 				numColumns={2}
 				contentContainerClassName="pb-32"
 				columnWrapperClassName="flex gap-5 px-5"
@@ -100,8 +97,8 @@ const Index = () => {
 							) : (
 								<FlatList
 									data={latestProperties}
-									renderItem={({ item }) => <FeaturedCard />}
-									keyExtractor={(item) => item.toString()}
+									renderItem={({ item }) => <FeaturedCard event={item} />}
+									keyExtractor={(item) => item.id.toString()}
 									horizontal
 									bounces={false}
 									showsHorizontalScrollIndicator={false}

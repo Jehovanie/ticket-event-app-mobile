@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { router, useLocalSearchParams } from "expo-router";
 import { Text, ScrollView, TouchableOpacity } from "react-native";
 
-import { categories } from "@/constants/data";
+import { categories } from "@/_shard/constants/data";
 
 const Filters = () => {
 	const params = useLocalSearchParams<{ filter?: string }>();
@@ -27,15 +27,13 @@ const Filters = () => {
 					key={index}
 					className={`flex flex-col items-start mr-4 px-4 py-2 rounded-full ${
 						selectedCategory === item.category ? "bg-primary" : "bg-primary-100 border border-primary-100"
-					}`}
-				>
+					}`}>
 					<Text
 						className={`text-sm ${
 							selectedCategory === item.category
 								? "text-white font-poppins-bold mt-0.5"
 								: "text-black font-poppins"
-						}`}
-					>
+						}`}>
 						{item.title}
 					</Text>
 				</TouchableOpacity>
