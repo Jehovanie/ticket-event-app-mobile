@@ -6,13 +6,15 @@ import { Card, FeaturedCard } from "@/components/Cards";
 import icons from "@/constants/icons";
 import images from "@/constants/images";
 import Filters from "@/components/Filters";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { EventContext } from "@/_config/context/EventContext";
 
 const Index = () => {
-	const properties: any = [1, 2, 3, 4];
 	const loading = false;
 	const lastestPropertiesLoading = false;
-	const latestProperties: any = [1, 2, 3, 4, 5, 6];
+
+	const [properties, setProperties] = useState<any>([]);
+	const [latestProperties, setLatestProperties] = useState<any>([]);
 
 	const handleCardPress = () => {};
 
@@ -20,9 +22,25 @@ const Index = () => {
 	const [isSearchMode, setIsSearchMode] = useState(false);
 
 	const handleSearch = () => {};
+
 	const toggleSearchMode = () => {
 		setIsSearchMode((state) => !state);
 	};
+
+	const context = useContext(EventContext);
+	if (!context) throw new Error("Must be used inside EventProvider");
+
+	const { events, isLoading, errors } = context;
+
+	useEffect(() => {
+		
+		setLatestProperties(events);
+		setProperties(events);
+
+		console.log("isLoading");
+		console.log(isLoading);
+
+	}, [isLoading]);
 
 	return (
 		<SafeAreaView className="bg-white flex-1">
