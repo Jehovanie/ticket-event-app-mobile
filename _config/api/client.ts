@@ -29,7 +29,9 @@ export async function client<T>(
 		if (body) config.body = JSON.stringify(body);
 
 		console.log(`Link : ${API}${endPoint}`);
+		console.log("confi " + JSON.stringify(config));
 		const response = await window.fetch(`${API}${endPoint}`, config);
+
 		const data = await response.json();
 		if (response.ok) {
 			return Promise.resolve({
@@ -40,7 +42,7 @@ export async function client<T>(
 			});
 		}
 
-		throw new Error(response.statusText);
+		throw new Error(JSON.stringify(response));
 	} catch (err: any) {
 		return Promise.reject(err.message ? err.message : []);
 	}

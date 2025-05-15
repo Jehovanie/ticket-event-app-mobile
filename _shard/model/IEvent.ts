@@ -1,3 +1,4 @@
+import { ICategory } from "./ICategory";
 import { IEventLocation } from "./IEventLocation";
 import { ITicketType } from "./ITicketType";
 
@@ -13,4 +14,5 @@ export interface IEvent {
 	status: boolean;
 	location: Partial<IEventLocation>;
 	ticket_type: ITicketType[];
+	category: Partial<ICategory>;
 }

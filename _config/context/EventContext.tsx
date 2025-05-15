@@ -44,5 +44,5 @@ export const EventProvider = ({ children }: { children: ReactNode }) => {
 		fetchEvents();
 	}, []);
 
-	return <EventContext.Provider value={dataEvents}> {children} </EventContext.Provider>;
+	return <EventContext.Provider value={dataEvents}>{children}</EventContext.Provider>;
 };
