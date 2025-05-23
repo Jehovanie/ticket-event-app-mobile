@@ -3,16 +3,21 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import NoResults from "@/components/NoResult";
 import { Card, FeaturedCard } from "@/components/Cards";
-import icons from "@/constants/icons";
-import images from "@/constants/images";
+import icons from "@/_shard/constants/icons";
+import images from "@/_shard/constants/images";
 import Filters from "@/components/Filters";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { EventContext } from "@/_config/context/EventContext";
+import { CategoryContext } from "@/_config/context/CategoryContext";
 
 const Index = () => {
-	const properties: any = [1, 2, 3, 4];
 	const loading = false;
 	const lastestPropertiesLoading = false;
-	const latestProperties: any = [1, 2, 3, 4, 5, 6];
+
+	const [properties, setProperties] = useState<any>([]);
+	const [latestProperties, setLatestProperties] = useState<any>([]);
+
+	const [allCategories, setAllsProperties] = useState<any>([]);
 
 	const handleCardPress = () => {};
 
@@ -20,15 +25,36 @@ const Index = () => {
 	const [isSearchMode, setIsSearchMode] = useState(false);
 
 	const handleSearch = () => {};
+
 	const toggleSearchMode = () => {
 		setIsSearchMode((state) => !state);
 	};
+
+	const eventContext = useContext(EventContext);
+	const categoriesContext = useContext(CategoryContext);
+
+	if (!eventContext) throw new Error("Must be used inside EventProvider");
+	if (!categoriesContext) throw new Error("Must be used inside CategoryContext");
+
+	const { events, isLoading: isLoadingEvent, errors: errorsEventContext } = eventContext;
+	const { categories, isLoading: isLoadingCategories, errors: errorsCategoriesContext } = categoriesContext;
+
+	useEffect(() => {
+		setLatestProperties(events);
+		setProperties(events.reverse());
+
+	}, [isLoadingEvent]);
+
+	useEffect(() => {
+		setAllsProperties(categories);
+	}, [isLoadingCategories]);
 
 	return (
 		<SafeAreaView className="bg-white flex-1">
 			<FlatList
 				data={properties}
-				renderItem={({ item }) => <Card />}
+				renderItem={({ item }) => <Card event={item} />}
+				keyExtractor={(item) => item.id.toString()}
 				numColumns={2}
 				contentContainerClassName="pb-32"
 				columnWrapperClassName="flex gap-5 px-5"
@@ -82,8 +108,8 @@ const Index = () => {
 							) : (
 								<FlatList
 									data={latestProperties}
-									renderItem={({ item }) => <FeaturedCard />}
-									keyExtractor={(item) => item.toString()}
+									renderItem={({ item }) => <FeaturedCard event={item} />}
+									keyExtractor={(item) => item.id.toString()}
 									horizontal
 									bounces={false}
 									showsHorizontalScrollIndicator={false}
@@ -98,7 +124,7 @@ const Index = () => {
 									<Text className="text-base font-poppins-medium text-primary">See all</Text>
 								</TouchableOpacity>
 							</View>
-							<Filters />
+							<Filters categories={categories.reverse()} />
 						</View>
 					</View>
 				}

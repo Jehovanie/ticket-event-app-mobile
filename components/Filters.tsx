@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { router, useLocalSearchParams } from "expo-router";
 import { Text, ScrollView, TouchableOpacity } from "react-native";
 
-import { categories } from "@/constants/data";
+import { ICategory } from "@/_shard/model/ICategory";
 
-const Filters = () => {
+interface Props {
+	categories: Partial<ICategory>[];
+	onPress?: () => void;
+}
+
+const Filters = ({ categories }: Props) => {
 	const params = useLocalSearchParams<{ filter?: string }>();
 	const [selectedCategory, setSelectedCategory] = useState(params.filter || "All");
 
@@ -21,22 +26,22 @@ const Filters = () => {
 
 	return (
 		<ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-3 mb-2">
-			{categories.map((item, index) => (
+			{[{ id: 0, name: "All", color: "green" }, ...categories].map((item, index) => (
 				<TouchableOpacity
-					onPress={() => handleCategoryPress(item.category)}
+					onPress={() => handleCategoryPress(item.name ?? "")}
 					key={index}
 					className={`flex flex-col items-start mr-4 px-4 py-2 rounded-full ${
-						selectedCategory === item.category ? "bg-primary" : "bg-primary-100 border border-primary-100"
+						selectedCategory === item.name ? "bg-primary" : "bg-primary-100 border border-primary-100"
 					}`}
 				>
 					<Text
 						className={`text-sm ${
-							selectedCategory === item.category
+							selectedCategory === item.name
 								? "text-white font-poppins-bold mt-0.5"
 								: "text-black font-poppins"
 						}`}
 					>
-						{item.title}
+						{item.name}
 					</Text>
 				</TouchableOpacity>
 			))}

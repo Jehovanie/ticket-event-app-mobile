@@ -1,9 +1,9 @@
 import { View, Text, ScrollView, Image, TouchableOpacity, ImageSourcePropType, Alert } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import icons from "@/constants/icons";
-import images from "@/constants/images";
-import { settings } from "@/constants/data";
+import icons from "@/_shard/constants/icons";
+import images from "@/_shard/constants/images";
+import { settings } from "@/_shard/constants/data";
 
 interface SettingsItemProp {
 	icon: ImageSourcePropType;
@@ -44,11 +44,7 @@ const Profile = () => {
 						<View className="flex flex-col items-center justify-center relative mt-5">
 							<Image source={images.avatar} className="size-44 relative rounded-full" />
 							<TouchableOpacity className="absolute bottom-11 right-2">
-								<Image
-									source={icons.edit}
-									tintColor="#5C27C0"
-									className="size-9"
-								/>
+								<Image source={icons.edit} tintColor="#5C27C0" className="size-9" />
 							</TouchableOpacity>
 							<Text className="text-2xl font-poppins-bold  mt-2">{user?.name} </Text>
 						</View>

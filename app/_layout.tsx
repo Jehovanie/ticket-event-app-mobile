@@ -3,6 +3,8 @@ import { Slot, SplashScreen, Stack } from "expo-router";
 import "./global.css";
 import { useEffect } from "react";
 import { useFonts } from "expo-font";
+import { EventProvider } from "@/_config/context/EventContext";
+import { CategoryProvider } from "@/_config/context/CategoryContext";
 
 export default function AppLayout() {
 	const [fontsLoaded] = useFonts({
@@ -24,10 +26,10 @@ export default function AppLayout() {
 	if (!fontsLoaded) return null;
 
 	return (
-		<Stack
-			screenOptions={{
-				headerShown: false,
-			}}
-		/>
+		<CategoryProvider>
+			<EventProvider>
+				<Slot />
+			</EventProvider>
+		</CategoryProvider>
 	);
 }
